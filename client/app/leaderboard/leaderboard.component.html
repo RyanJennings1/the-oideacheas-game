@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+               <h1>Leaderboard</h1> 
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="jumbotron">
+              <h3>Your Score: </h3>
+              <hr>
+              <table class="table table-bordered table-hover">
+                  <thead>
+                      <tr style="background-color: #808080">
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Time</th>
+                        <th>Score</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let score of scores; let position = index">
+                        <th>{{position+1}}</th>
+                        <th>{{score.name}}</th>
+                        <th>{{score.age}}</th>
+                        <th>{{score.time}}</th>
+                        <th>{{score.score}}</th>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div>

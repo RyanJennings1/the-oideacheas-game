@@ -1,0 +1,76 @@
+<div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-user" style="padding: 10px;">
+                  <form class="form" [formGroup]="form" name="form" (ngSubmit)="submitFormData()" #f="ngForm" novalidate>
+                    <div class="form-group row">
+
+                    </div><!-- end of form-group row -->
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Question text</label>
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="q" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Answer 1</label>
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="ans1" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Answer 2</label>
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="ans2" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Answer 3</label>
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="ans3" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Answer 4</label>
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="ans4" class="form-control">
+                      </div>
+                    </div>
+                    
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Right Answer (i.e. Answer 1 or Answer 2 etc.)</label>
+                      <div class="col-sm-8">
+                        <input type="number" formControlName="rightAnswer" class="form-control" max="4" min="1">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 control-label">Topic</label>
+                      <div class="col-sm-8">
+                        <select formControlName="topic" class="form-control">
+                          <option value="technology">Technology</option>
+                          <option value="science">Science</option>
+                          <option value="geography">Geography</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <input class="btn btn-fill" style="background-color: #3ac5f2" type="submit" value="Add Question">
+                      </div>
+                    </div>
+                </form>
+              </div><!-- end of card user -->
+            </div><!-- end of col-md-12 -->
+        </div><!-- end of row -->
+
+    </div><!-- container fluid -->
+</div><!-- end of content div -->

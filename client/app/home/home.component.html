@@ -1,0 +1,50 @@
+<style type="text/css">
+  .remove_padding {
+    padding-top: 0% !important;
+  }
+</style>
+
+<div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-user" style="padding: 10px;">
+                  <div class="row">
+                    <img src="../../assets/img/game-logo.png" height="200px" style="display: block; margin: auto">
+                  </div>
+                  <form class="form" [formGroup]="form" name="form" (ngSubmit)="submitFormData()" #f="ngForm" style="margin-left: 25%" novalidate>
+                    <div class="form-group row">
+
+                    </div><!-- end of form-group row -->
+
+                    <div class="form-group row">
+                      <!--<label class="col-sm-4 control-label">Name</label>-->
+                      <div class="col-sm-8">
+                        <input type="text" formControlName="name" class="form-control" [(ngModel)]="model.name" placeholder="Name">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <!--<label class="col-sm-4 control-label">Age</label>-->
+                      <div class="col-sm-8">
+                        <input type="number" formControlName="age" class="form-control" [(ngModel)]="model.age" placeholder="Age">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-8" style="margin-left: 25%">
+                        <input class="btn btn-fill" style="background-color: #3ac5f2" type="submit" value="Play Game">
+                      </div>
+                    </div>
+                </form>
+                <div class="row">
+                <div class="col-md-8" style="margin-left: 42.5%">
+                  <a class="btn btn-fill" style="background-color: red" href="/leaderboard">Leaderboard</a>
+                </div>
+                </div>
+              </div><!-- end of card user -->
+            </div><!-- end of col-md-12 -->
+        </div><!-- end of row -->
+
+    </div><!-- container fluid -->
+</div><!-- end of content div -->

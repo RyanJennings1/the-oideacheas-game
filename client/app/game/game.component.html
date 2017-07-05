@@ -1,0 +1,90 @@
+<div class="wrapper">
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="col-md-2">
+                    <div class="navbar-header">
+                        <img src="../../assets/img/default_profile.png" height="50px" style="margin-top: 5px">{{gottenData?.name}}
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div style="background-color: yellow; height: 50px; margin-top: 5px; text-align: right" [style.width.px]="score">{{score}}</div><!-- score -->
+                </div>
+                <div class="col-md-2">
+                    <div class="pull-right" style="font-size: 3em">
+                        {{minutesShown}}:{{offsetNumber}}{{secondsShown}}
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="jumbotron">
+              <div class="row">
+                <p>{{currentQuestion?.q}}{{questionMark}}</p>
+              </div>
+
+              <form class="form" [formGroup]="form" name="form" (ngSubmit)="submitFormData()">
+              <div class="form-group row">
+              <div class="row">
+                <div class="col-md-1">
+                    <h4>a) </h4>
+                </div>
+                <div>
+                    <label class="col-md-5 btn btn-primary btn-fill">{{currentQuestion?.ans1}}
+                      <input type="radio" formControlName="selectedAnswer" value="1">
+                    </label>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-md-1">
+                    <h4>b) </h4>
+                </div>
+                <div>
+                    <label class="col-md-5 btn btn-primary btn-fill">{{currentQuestion?.ans2}}
+                      <input type="radio" formControlName="selectedAnswer"  value="2">
+                    </label>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-md-1">
+                    <h4>c) </h4>
+                </div>
+                <div>
+                    <label class="col-md-5 btn btn-primary btn-fill">{{currentQuestion?.ans3}}
+                      <input type="radio" formControlName="selectedAnswer"  value="3">
+                    </label>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-md-1">
+                    <h4>d) </h4>
+                </div>
+                <div>
+                    <label class="col-md-5 btn btn-primary btn-fill">{{currentQuestion?.ans4}}
+                      <input type="radio" formControlName="selectedAnswer"  value="4">
+                    </label>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                  <button class="btn btn-warning btn-fill pull-right" type="submit">Next</button>
+              </div>
+
+              <div class="row">
+                  <button class="btn btn-success btn-fill pull-left" (click)="createScore()">Add Score</button>
+              </div>
+
+              </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
