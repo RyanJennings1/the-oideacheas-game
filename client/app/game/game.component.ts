@@ -18,17 +18,18 @@ export class GameComponent {
   form: FormGroup;
   gameData: any = {};
   scoreData: any = {
-    name: "Jeff",
-    age: 20,
+    name: "Eddy",
+    age: 9,
     time: 0,
-    score: 100,
+    score: 50,
   };
-  score: number = 100;
+  score: number = 0;
   questions: Question[] = [];
   questionMark: string = "";
   currentQuestion: Question;
   roundTopic: string = "technology";
   randomQuestionIndex: number = 0;
+  gameOverCount: number = 1;
 
   // Variable for Timer
   gottenData: any = {};
@@ -89,6 +90,10 @@ export class GameComponent {
     } else {
       // console.log("Game Over");
       // this.gameOver();
+      if(this.gameOverCount == 1) {
+        this.gameOverCount++;
+        this.gameOver();
+      }
     }
   }
 
@@ -96,8 +101,9 @@ export class GameComponent {
     this.gottenData = this.inputDataService.getInputData();
   }
 
-  createScore() {
-    this.scoreService.create(this.scoreData, true)
+  createScore(scoreToCreate: any) {
+    // this.scoreService.create(this.scoreData, true)
+    this.scoreService.create(scoreToCreate, true)
       .subscribe(
         data => {
           console.log("data", data);
@@ -136,7 +142,8 @@ export class GameComponent {
     this.gameData.age = this.gottenData.age;
     this.gameData.score = this.score;
     this.gameData.time = (this.gameLengthMinutes*60)-this.ticks;
-    this.inputDataService.setGameData(this.gameData);
+    // this.inputDataService.setGameData(this.gameData);
+    this.createScore(this.gameData);
     this.router.navigate(['/leaderboard']);
   }
 
@@ -149,8 +156,13 @@ export class GameComponent {
       this.alertService.success('Correct', true);
       this.score += 5;
       // If array empty then end game
+      console.log("questions.length", this.questions.length);
+      if(this.questions.length == 1) {
+        this.gameOver();
+      }
       if(this.questions.length <= 0) {
         // this.gameOver();
+        this.gameOver();
       } else {
         for(let j = 0; j < this.questions.length; j++) {
           if(this.currentQuestion.q == this.questions[j].q) {

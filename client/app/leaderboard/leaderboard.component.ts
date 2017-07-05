@@ -42,6 +42,7 @@ export class LeaderboardComponent {
         this.scores = this.scores.sort(function(a,b) {
           return a.score - b.score;
         });
+        this.scores.reverse();
         console.log("this.scores sorted", this.scores);
       },
       error => {
