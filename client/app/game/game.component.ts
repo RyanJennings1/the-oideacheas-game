@@ -25,9 +25,10 @@ export class GameComponent {
   };
   score: number = 0;
   questions: Question[] = [];
+  gameQuestions: Question[] = [];
   questionMark: string = "";
   currentQuestion: Question;
-  roundTopic: string = "technology";
+  roundTopic: string = "";
   randomQuestionIndex: number = 0;
   gameOverCount: number = 1;
 
@@ -120,15 +121,37 @@ export class GameComponent {
       questions => {
         // console.log("questions", questions);
         this.questions = questions;
-        /*for(let i = 0; i < this.questions.length; i++) {
-          /*if((this.questions[i].topic != this.roundTopic) && this.questions.length == 1) {
+        console.log("this.questions", this.questions);
+        for(let i = 0; i < this.questions.length; i++) {
+          console.log("this.questions[i]", this.questions[i]);
+          console.log("this.questions[i].topic", this.questions[i].topic);
+          console.log("topic == q.topic", this.roundTopic == this.questions[i].topic);
+          if(this.roundTopic == this.questions[i].topic) {
+            this.gameQuestions.push(this.questions[i]);
+          }
+        }
+        console.log("gameQuestions", this.gameQuestions);
+
+        /*
+        for(let i = 0; i < this.questions.length; i++) {
+          console.log("____________________________________________________________________________");
+          console.log("this.questions", this.questions);
+          console.log("this.questions.length", this.questions.length);
+          console.log("this.questions[i]", this.questions[i]);
+          console.log("this.questions[i].topic", this.questions[i].topic);
+          console.log("this.questions[i].topic != this.roundTopic", this.questions[i].topic != this.roundTopic);
+          if((this.questions[i].topic != this.roundTopic) && this.questions.length == 1) {
+            console.log("Popped ---------------------------------------");
             this.questions.pop();
-          } else /if(this.questions[i].topic != this.roundTopic) {
+          } else if(this.questions[i].topic != this.roundTopic) {
+            console.log("Spliced --------------------------------------");
             this.questions.splice(i,1);
           }
+          console.log("end __________________________________________________________________________");
         }*/
         // console.log("questions in topic", questions);
-        this.currentQuestion = this.questions[this.randomQuestionIndex];
+        // this.currentQuestion = this.questions[this.randomQuestionIndex];
+        this.currentQuestion = this.gameQuestions[this.randomQuestionIndex];
         if(this.currentQuestion.q.slice(-1) != '?') { this.questionMark = '?';}
       },
       error => {
@@ -156,29 +179,41 @@ export class GameComponent {
       this.alertService.success('Correct', true);
       this.score += 5;
       // If array empty then end game
-      console.log("questions.length", this.questions.length);
-      if(this.questions.length == 1) {
+      console.log("questions.length", this.gameQuestions.length);
+      if(this.gameQuestions.length == 1) {
         this.gameOver();
       }
-      if(this.questions.length <= 0) {
+      if(this.gameQuestions.length <= 0) {
         // this.gameOver();
         this.gameOver();
       } else {
-        for(let j = 0; j < this.questions.length; j++) {
-          if(this.currentQuestion.q == this.questions[j].q) {
-            this.questions.splice(j,1);
+        for(let j = 0; j < this.gameQuestions.length; j++) {
+          if(this.currentQuestion.q == this.gameQuestions[j].q) {
+            this.gameQuestions.splice(j,1);
           }
         }
       // else randomly get next question
-        this.randomQuestionIndex = Math.floor(Math.random() * (this.questions.length - 1));
-        console.log("randomQuestionIndex", this.randomQuestionIndex);
-        console.log("questions.length", this.questions.length);
-        this.currentQuestion = this.questions[this.randomQuestionIndex];
-        console.log("currentQuestion", this.currentQuestion);
-        console.log("questions", this.questions);
+        this.randomQuestionIndex = Math.floor(Math.random() * (this.gameQuestions.length - 1));
+        this.currentQuestion = this.gameQuestions[this.randomQuestionIndex];
       }
     } else {
       this.alertService.error('Wrong', true);
+      if(this.gameQuestions.length == 1) {
+        this.gameOver();
+      }
+      if(this.gameQuestions.length <= 0) {
+        // this.gameOver();
+        this.gameOver();
+      } else {
+        for(let j = 0; j < this.gameQuestions.length; j++) {
+          if(this.currentQuestion.q == this.gameQuestions[j].q) {
+            this.gameQuestions.splice(j,1);
+          }
+        }
+      // else randomly get next question
+        this.randomQuestionIndex = Math.floor(Math.random() * (this.gameQuestions.length - 1));
+        this.currentQuestion = this.gameQuestions[this.randomQuestionIndex];
+      }
     }
   }
 

@@ -17,6 +17,8 @@ import { HomeComponent } from './home/index';
 import { GameComponent } from './game/index';
 import { LeaderboardComponent } from './leaderboard/index';
 import { NewQuestionComponent } from './new-question/index';
+import { MyQuestionsComponent } from './myquestions/index';
+import { MyScoresComponent } from './myscores/index';
 
 @NgModule({
     imports: [
@@ -34,6 +36,8 @@ import { NewQuestionComponent } from './new-question/index';
         GameComponent,
         LeaderboardComponent,
         NewQuestionComponent,
+        MyQuestionsComponent,
+        MyScoresComponent,
     ],
     providers: [
         AppConfig,

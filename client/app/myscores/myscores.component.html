@@ -1,0 +1,4 @@
+<h1>My Scores</h1>
+<ul>
+    <li *ngFor="let score of scores">{{score?.name}} - {{score?.age}} with score: {{score?.score}}  <a (click)="deleteScore(score._id)">[Delete]</a></li>
+<ul>

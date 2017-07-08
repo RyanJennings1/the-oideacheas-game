@@ -1,0 +1,4 @@
+<h1>My Questions</h1>
+<ul>
+    <li *ngFor="let question of questions">{{question?.q}}   <a (click)="deleteQuestion(question._id)">[Delete]</a></li>
+<ul>
